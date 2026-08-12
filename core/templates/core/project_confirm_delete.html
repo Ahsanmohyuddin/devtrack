@@ -1,0 +1,48 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+Delete Project - DevTrack
+{% endblock %}
+
+
+{% block content %}
+
+<div class="delete-container">
+
+    <h1>Delete Project?</h1>
+
+    <p class="delete-warning">
+        This action cannot be undone.
+    </p>
+
+    <div class="delete-item">
+        "{{ project.name }}"
+    </div>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <div class="form-actions" style="justify-content: center;">
+
+            <button
+                type="submit"
+                class="btn delete-btn"
+            >
+                Yes, Delete
+            </button>
+
+            <a
+                href="{% url 'project_list' %}"
+                class="btn cancel-btn"
+            >
+                Cancel
+            </a>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

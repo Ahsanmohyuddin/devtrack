@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}DevTrack{% endblock %}</title>
+
+</head>
+
+<body>
+
+    <header>
+
+        <h1>DevTrack</h1>
+
+        <nav>
+
+            <a href="{% url 'home' %}">
+                Dashboard
+            </a>
+        
+            <span>|</span>
+        
+            <a href="{% url 'project_list' %}">
+                Projects
+            </a>
+        
+            <span>|</span>
+        
+            <a href="{% url 'about' %}">
+                About
+            </a>
+        
+            <span>|</span>
+        
+            <span class="nav-user">
+                {{ request.user.username }}
+            </span>
+        
+            <form method="POST" action="{% url 'logout' %}" style="display:inline;">
+        
+                {% csrf_token %}
+        
+                <button type="submit">
+                    Logout
+                </button>
+        
+            </form>
+        
+        </nav>
+    </header>
+
+    <hr>
+
+    <main>
+
+        {% block content %}
+
+        {% endblock %}
+
+    </main>
+
+    <hr>
+
+    <footer>
+
+        <p>
+            DevTrack © 2026
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

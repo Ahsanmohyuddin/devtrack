@@ -1,0 +1,142 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+Dashboard - DevTrack
+{% endblock %}
+
+
+{% block content %}
+
+<div class="dashboard-header">
+
+    <h1>Welcome {{ request.user.username }}</h1>
+
+    <p>
+        Manage your projects and keep track of your tasks.
+    </p>
+
+</div>
+
+
+<div class="stats-grid">
+
+    <div class="stat-card">
+
+        <h3>Total Projects</h3>
+
+        <p class="stat-number">
+            {{ total_projects }}
+        </p>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <h3>Total Tasks</h3>
+
+        <p class="stat-number">
+            {{ total_tasks }}
+        </p>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <h3>Completed</h3>
+
+        <p class="stat-number">
+            {{ completed_tasks }}
+        </p>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <h3>Pending</h3>
+
+        <p class="stat-number">
+            {{ pending_tasks }}
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="dashboard-section">
+
+    <div class="section-header">
+
+        <h2>Your Projects</h2>
+
+        <a
+            href="{% url 'project_create' %}"
+            class="btn primary-btn"
+        >
+            + New Project
+        </a>
+
+    </div>
+
+
+    {% for project in projects %}
+
+        <div class="project-card">
+
+            <h2>
+                {{ project.name }}
+            </h2>
+
+            <p>
+                {{ project.description }}
+            </p>
+
+            <p class="task-count">
+
+                {{ project.tasks.count }}
+            
+                {% if project.tasks.count == 1 %}
+                    task
+                {% else %}
+                    tasks
+                {% endif %}
+            
+            </p>
+            
+            <a
+                href="{% url 'project_list' %}"
+                class="btn secondary-btn"
+            >
+                Manage Projects
+            </a>
+
+        </div>
+
+
+    {% empty %}
+
+        <div class="empty-state">
+
+            <h3>No projects yet</h3>
+
+            <p>
+                Create your first project to get started.
+            </p>
+
+            <a
+                href="{% url 'project_create' %}"
+                class="btn primary-btn"
+            >
+                Create Project
+            </a>
+
+        </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
