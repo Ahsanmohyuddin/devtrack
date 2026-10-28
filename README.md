@@ -113,33 +113,9 @@ Authorization
 CRUD operations
 Database relationships
 Git and GitHub
-🚀 Future Improvements
-REST API
-PostgreSQL
-Better dashboard
-Task editing and deletion
-Search and filtering
-AI integration
-Deployment
-👤 Author
 
 Ahsanmohyuddin
 
 GitHub:
 https://github.com/Ahsanmohyuddin
 
-
-### Then save it as
-
-```text
-devtrack/README.md
-
-Then run:
-
-git add README.md requirements.txt
-git commit -m "Add project documentation"
-git push
-
-After that, refresh your GitHub repository. The README will automatically appear on the front page.
-
-This is enough for GitHub. Keep the much longer explanation we made separately for your class/project documentation, not inside the repository README.
